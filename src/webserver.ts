@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import logger from './logger';
 import {
-  CONTEXT_PATH, PKG_IMPORT_PATTERN, PKG_SOURCE_PATTERN,
+  CONTEXT_PATH, PKG_IMPORT_TEMPLATE, PKG_SOURCE_TEMPLATE,
   PKG_VCS
 } from './config';
 
@@ -28,8 +28,8 @@ router.use((req: express.Request, res: express.Response) => {
   const packageFullPath = `${req.hostname}${req.path}`;
   const packageName = req.path.substring(1);
 
-  const packageImport = PKG_IMPORT_PATTERN.replace(/\[PKG_NAME\]/g, packageName);
-  const packageSource = PKG_SOURCE_PATTERN.replace(/\[PKG_NAME\]/g, packageName);
+  const packageImport = PKG_IMPORT_TEMPLATE.replace(/\[PKG_NAME\]/g, packageName);
+  const packageSource = PKG_SOURCE_TEMPLATE.replace(/\[PKG_NAME\]/g, packageName);
 
   res
     .status(200)

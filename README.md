@@ -20,11 +20,11 @@ Default: `8080`
 
 Default: `git`
 
-### PKG_IMPORT_PATTERN
+### PKG_IMPORT_TEMPLATE
 
 Example: `https://private-git-repository.com:1234/[PKG_NAME].git`
 
-### PKG_SOURCE_PATTERN
+### PKG_SOURCE_TEMPLATE
 
 Example: `https://private-git-repository.com:1234/[PKG_NAME] https://private-git-repository.com:1234/[PKG_NAME]/-/tree/master{/dir} https://private-git-repository.com:1234/[PKG_NAME]/-/blob/master{/dir}/{file}#L{line}`
 
