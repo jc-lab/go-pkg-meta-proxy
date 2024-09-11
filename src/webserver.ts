@@ -3,7 +3,8 @@ import morgan from 'morgan';
 import logger from './logger';
 import {
   CONTEXT_PATH, PKG_IMPORT_TEMPLATE, PKG_SOURCE_TEMPLATE,
-  PKG_VCS
+  PKG_VCS,
+  IGNORE_PKGS,
 } from './config';
 
 const app = express();
@@ -30,6 +31,11 @@ router.use((req: express.Request, res: express.Response) => {
 
   const packageImport = PKG_IMPORT_TEMPLATE.replace(/\[PKG_NAME\]/g, packageName);
   const packageSource = PKG_SOURCE_TEMPLATE.replace(/\[PKG_NAME\]/g, packageName);
+
+  if (IGNORE_PKGS.indexOf(packageName) >= 0) {
+    res.sendStatus(404);
+    return;
+  }
 
   res
     .status(200)
